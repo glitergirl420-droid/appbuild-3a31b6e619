@@ -37,11 +37,7 @@ jobs:
           path: android/app/build/outputs/apk/debug/*.apk
 
       - name: Publish APK to release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag: v${{ github.run_number }}
-          name: App Build ${{ github.run_number }}
-          files: android/app/build/outputs/apk/debug/*.apk
-          make_latest: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ github.run_number }}"             android/app/build/outputs/apk/debug/*.apk             --title "App Build ${{ github.run_number }}"             --notes "Debug APK (gradlew assembleDebug)"             --latest=false
