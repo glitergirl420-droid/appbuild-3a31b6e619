@@ -1,0 +1,8 @@
+{
+  "appId": "com.base44.test-app",
+  "appName": "Test App",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
